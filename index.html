@@ -78,6 +78,9 @@
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
+        // Agrega el siguiente código para forzar la pantalla en modo horizontal
+        screen.orientation.lock('landscape');
+
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -89,12 +92,13 @@
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        unityShowBanner('El modo de juego para navegadores moviles está en beta, por favor disculpa las molestias por posibles fallos, si deseas ayudarnos a mejorar puedes reportar estos fallos.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
         canvas.style.width = "1280px";
         canvas.style.height = "720px";
+        unityShowBanner('Uy uy el mensajito este funciona');
       }
 
       loadingBar.style.display = "block";
