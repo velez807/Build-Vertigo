@@ -77,7 +77,9 @@
     // the canvas DOM size and WebGL render target sizes yourself.
     // config.matchWebGLToCanvasSize = false;
 
+
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      unityInstance.SendMessage("DeviceObj", "ReceiveDeviceInfo", "Mobile");
       // Mobile device style: fill the whole browser client area with the game canvas:
 
       // Agrega el siguiente código para forzar la pantalla en modo horizontal
