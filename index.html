@@ -23,6 +23,10 @@
         <div id="unity-build-title">Mision Bomba</div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-auth-compat.js"></script>
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -56,11 +60,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build Vertigo.loader.js";
+      var loaderUrl = buildUrl + "/BuildJuego.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build Vertigo.data",
-        frameworkUrl: buildUrl + "/Build Vertigo.framework.js",
-        codeUrl: buildUrl + "/Build Vertigo.wasm",
+        dataUrl: buildUrl + "/BuildJuego.data",
+        frameworkUrl: buildUrl + "/BuildJuego.framework.js",
+        codeUrl: buildUrl + "/BuildJuego.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Vértigo Paintball",
         productName: "Mision Bomba",
@@ -105,6 +109,7 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          window.unityInstance = unityInstance;
           loadingBar.style.display = "none";
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
@@ -115,5 +120,20 @@
       };
       document.body.appendChild(script);
     </script>
+      <script>
+        document.getElementById("resultado").innerHTML = "Segundo script";
+        const firebaseApp = firebase.initializeApp({
+          apiKey: "AIzaSyB2S--M6FdhqkgB9lMosxKb40CUdPio5Zc",
+          authDomain: "juegovertigo.firebaseapp.com",
+          databaseURL: "https://juegovertigo-default-rtdb.firebaseio.com",
+          projectId: "juegovertigo",
+          storageBucket: "juegovertigo.appspot.com",
+          messagingSenderId: "850388292562",
+          appId: "1:850388292562:web:88aaa44c4571f5cf05ee0b",
+          measurementId: "XXXXXXXXXXXXX"
+        });
+        const db = firebaseApp.database();
+        const auth = firebaseApp.auth();
+      </script>
   </body>
 </html>
